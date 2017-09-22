@@ -35,9 +35,9 @@ timing.Tmax = timing.npts*timing.dt-timing.dt;
 timing.deltaF = 1/timing.Tmax;
 
 %time vector
-timing.t = 0:timing.dt:timing.Tmax;
+timing.t = [0:timing.dt:timing.Tmax]';
 %frequency vector
 timing.F = [0:timing.deltaF:timing.Fn , -timing.Fn:...
-    timing.deltaF:0];
+    timing.deltaF:0]';
 end
 
