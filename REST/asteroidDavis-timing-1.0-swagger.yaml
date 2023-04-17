@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: 'Timing'
+  description: ' timing elements of a 1D signal'
+paths: 
+  '/power/timing/${observation_name}':
+    summary: '1 timing vector
+    parameters:
+      - $ref: "#/components/parameters/observation_name"
+    get:
+      description: 'get a stored observation in a timing object'
+      parameters: []
+      responses:
+        200:
+          description: 'the observation was found and transmitted'
+        404:
+          description: 'the observation was not found'
+    put:
+      description: 'store an observation with its timing object'
+      parameters: []
+      responses:
+        200:
+          description: 'the observation was stored'
+        400:
+          description: 'the observation is invalid so cannot be stored'
+    delete:
+      description: 'delete a stored observation in a timing object'
+      parameters: []
+      responses:
+        204:
+          description: 'the observation was deleted'
+        404:
+          description: 'the observation could not be  found'
+  '/power/timing':
+    get:
+      description: 'get an empty timing object with the desired size'
+      parameters: []
+      responses:
+        200:
+          description: 'the timing object was transmitted'
+        500:
+          description: 'outage'
+    
+    
+      
+    
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/asteroidDavis/timing/1.0
+    
+components:
+  schemas: {}
+    
+  parameters:
+    observation_name:
+      name: observation_name
+      required: true
+      in: path
+      description: "a unique id describing 1 observation"
+      content:
+        string: {}

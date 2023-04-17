@@ -15,4 +15,17 @@ See the function header
 # Advice
 Add elements which you need and remove elements you do not need
 
+# Rewrite with OpenAPI
+We're going to use the timing api which 
+we originally implemented using Matlab.
+Except we're going to implement it 
+as a python and REST interface over 
+a timeseries database.
+
+Clients could add support for different tool
+and material relations. We could also just work on a graphical client
+
+
+REST/asteroidDavis-timing-1.0-swagger.yaml is the interface I'll be using.
+- There are some experimental implementations in that directory too
 
