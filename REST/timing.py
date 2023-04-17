@@ -36,14 +36,11 @@ class Timing():
         self.delta_frequency = 1.0/self.max_time
 
     @property
-    @lru_cache(maxsize=1)
     def time(self) -> List[float]:
         """The vector of the signals time domain"""
         return [0.0 + self.delta_time * i for i in self.number_of_points ]
 
     @property
-    @abstractmethod
-    @lru_cache(maxsize=1)
     def frequency(self) -> List[float]:
         """The vector of the signals' frequency domain"""
         frequency_domain_size = self.nyquist_frequency/self.delta_frequency
