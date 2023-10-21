@@ -27,5 +27,11 @@ and material relations. We could also just work on a graphical client
 
 
 REST/asteroidDavis-timing-1.0-swagger.yaml is the interface I'll be using.
-- There are some experimental implementations in that directory too
+- timing.py is responsible for the in memory representation and essentially copies the original timing.m
+- timing.sql or similar will be responsible for persisting the objects in timing.py
+
+- chalice, CDK, another aws tool should be used to set this up in my account with a lambda
+- app.py is the routes for the app
+- authentication/authorization can be handled with access tokens
+
 

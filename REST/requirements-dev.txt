@@ -1,2 +1,2 @@
-chalice~=1.28
+chalice[cdk]~=1.28
 mysql-connector-python~=8.0

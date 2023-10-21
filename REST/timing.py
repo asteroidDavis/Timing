@@ -1,11 +1,12 @@
 from abc import ABC, abstractmethod
 from functools import lru_cache
 from typing import List
+from uuid import uuid4
 
 
 class Timing():
 
-    def __init__(self, npts, sps):
+    def __init__(self, npts, sps, observation_name: str = None):
         """
         Timing - Create a timing struct with everything necassary for a frequency
         spectrum plot
@@ -34,6 +35,8 @@ class Timing():
         self.delta_time = 1.0/sps
         self.max_time = npts*self.delta_time - self.delta_time
         self.delta_frequency = 1.0/self.max_time
+        if observation_name is None:
+            self.observation_name = str(uuid4())
 
     @property
     def time(self) -> List[float]:
