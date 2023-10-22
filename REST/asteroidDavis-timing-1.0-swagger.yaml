@@ -3,8 +3,8 @@ info:
   version: '1.0'
   title: 'Timing'
   description: ' timing elements of a 1D signal'
-paths: 
-    '/power/timing/${observationName}':
+paths:
+  '/power/timing/${observationName}':
     summary: '1 timing vector'
     parameters:
       - $ref: "#/components/parameters/observationName"
@@ -18,8 +18,6 @@ paths:
           description: 'the observation was not found'
     put:
       description: 'store an observation with its timing object'
-      parameters:
-        - $ref: "#/components/parameters/samples_per_second"
       requestBody:
         $ref: "#/components/requestBodies/timeAndVector"
       responses:
@@ -50,30 +48,36 @@ servers:
   # Added by API Auto Mocking Plugin
   - description: SwaggerHub API Auto Mocking
     url: https://virtserver.swaggerhub.com/asteroidDavis/timing/1.0
-    
+
 components:
   schemas:
     samplesPerSecond:
-        type: number
-        minimum: 0
-        exclusiveMinimum: true
+      type: number
+      minimum: 0
+      exclusiveMinimum: true
     numberOfPoints:
       type: integer
       minimum: 1
-
-  requestBodies:
-    timeAndVector:
-      description:
-      required:
-      content:
-        application/json:
+    timingDomain:
+      type: object
+      properties:
+        schema:
           allOf:
             - $ref: "#/components/schemas/samplesPerSecond"
             - $ref: "#/components/schemas/numberOfPoints"
-    
+
+  requestBodies:
+    timeAndVector:
+      description: "The data representing the domain of the timing object"
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/timingDomain"
+
   parameters:
     observationName:
-      name: observation name
+      name: observationName
       required: true
       in: path
       description: "a unique id describing 1 observation"
